@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adivina la Carta</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="header">
+      <h1>Adivina la Carta</h1>
+      <div class="scoreboard">
+        <div id="p1-score" class="player active">Jugador 1: <span>0</span></div>
+        <div id="p2-score" class="player">Jugador 2: <span>0</span></div>
+      </div>
+      <button onclick="location.reload()">Reiniciar Juego</button>
+    </div>
+
+    <div class="game-board">
+      {% for carta in baraja %}
+      <div class="card" data-valor="{{ carta }}">
+        <div class="card-inner">
+          <div class="card-front">❓</div>
+          <div class="card-back">{{ carta }}</div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>
